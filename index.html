@@ -1,1 +1,288 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crimsy Catering | Mini pancakes for weddings, birthdays and events</title>
+<meta name="description" content="Crimsy Catering serves mini pancakes at weddings, birthdays and events. See our hourly plans and get in touch for a quote.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #000000;
+    --surface: #0e0d0b;
+    --line: #3a3120;
+    --gold: #c9a24b;
+    --gold-light: #e9d08f;
+    --text: #f2ebdc;
+    --muted: #b3a98f;
+    --serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+    --sans: "Jost", "Helvetica Neue", Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--black);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 1.05rem;
+    line-height: 1.65;
+  }
+  a { color: var(--gold-light); }
+  :focus-visible { outline: 2px solid var(--gold-light); outline-offset: 3px; }
+  .wrap { max-width: 1040px; margin: 0 auto; padding: 0 1.5rem; }
 
+  header.site {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.25rem 1.5rem; max-width: 1040px; margin: 0 auto;
+  }
+  .logo { font-family: var(--serif); font-size: 1.6rem; font-weight: 700; color: var(--gold); text-decoration: none; letter-spacing: .02em; }
+  nav a { margin-left: 1.5rem; color: var(--text); text-decoration: none; font-size: .95rem; }
+  nav a:hover { color: var(--gold-light); }
+
+  /* Hero */
+  .hero { display: grid; grid-template-columns: 1.3fr 1fr; gap: 2rem; align-items: center; padding: 3rem 0 5rem; }
+  .hero h1 {
+    font-family: var(--serif); font-weight: 600; color: var(--gold);
+    font-size: clamp(2.8rem, 7vw, 5.2rem); line-height: 1.02; margin: 0 0 1.25rem;
+  }
+  .hero p { max-width: 34rem; color: var(--text); font-size: 1.15rem; margin: 0 0 2rem; }
+  .btn {
+    display: inline-block; padding: .85rem 1.6rem; border: 1px solid var(--gold);
+    background: var(--gold); color: var(--black); font-family: var(--sans); font-weight: 500;
+    font-size: 1rem; text-decoration: none; cursor: pointer; border-radius: 2px;
+  }
+  .btn:hover { background: var(--gold-light); border-color: var(--gold-light); }
+  .btn.ghost { background: transparent; color: var(--gold-light); margin-left: .75rem; }
+  .btn.ghost:hover { background: rgba(201,162,75,.12); }
+  .hero svg { width: 100%; max-width: 380px; justify-self: center; }
+
+  section { padding: 4rem 0; border-top: 1px solid var(--line); }
+  h2 { font-family: var(--serif); font-weight: 600; color: var(--gold); font-size: clamp(2rem, 4.5vw, 3rem); margin: 0 0 .5rem; line-height: 1.1; }
+  .lead { color: var(--muted); max-width: 36rem; margin: 0 0 2.5rem; }
+
+  /* Plans as a menu */
+  .menu { list-style: none; margin: 0; padding: 0; max-width: 640px; }
+  .menu li { display: flex; align-items: baseline; gap: .75rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
+  .menu .name { font-family: var(--serif); font-size: 1.7rem; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .menu .dots { flex: 1; border-bottom: 1px dotted var(--gold); transform: translateY(-.35rem); min-width: 1rem; }
+  .menu .price { font-family: var(--serif); font-size: 1.7rem; font-weight: 700; color: var(--gold-light); white-space: nowrap; }
+  .menu .note { display: block; font-family: var(--sans); font-size: .9rem; color: var(--muted); font-weight: 400; }
+  .menu li.long { align-items: flex-start; }
+  .small { color: var(--muted); font-size: .95rem; margin-top: 1.5rem; max-width: 40rem; }
+
+  /* Calculator */
+  .calc { margin-top: 2.5rem; padding: 1.5rem; background: var(--surface); border: 1px solid var(--line); max-width: 640px; }
+  .calc label { display: block; margin-bottom: .5rem; font-weight: 500; }
+  .calc select, form input, form select, form textarea {
+    width: 100%; padding: .75rem .85rem; background: var(--black); color: var(--text);
+    border: 1px solid var(--line); border-radius: 2px; font: inherit;
+  }
+  .calc select:focus, form input:focus, form select:focus, form textarea:focus { border-color: var(--gold); outline: none; }
+  .calc output { display: block; margin-top: 1rem; font-family: var(--serif); font-size: 2rem; color: var(--gold-light); font-weight: 700; }
+  .calc output small { display: block; font-family: var(--sans); font-size: .9rem; color: var(--muted); font-weight: 400; }
+
+  /* About */
+  .about-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .about-list li { padding-left: 1rem; border-left: 2px solid var(--gold); }
+  .about-list strong { display: block; font-family: var(--serif); font-size: 1.35rem; color: var(--text); }
+  .about-list span { color: var(--muted); }
+
+  /* Contact */
+  .contact { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; }
+  form .row { margin-bottom: 1rem; }
+  form label { display: block; margin-bottom: .35rem; font-size: .95rem; color: var(--muted); }
+  form textarea { min-height: 120px; resize: vertical; }
+  .form-note { font-size: .9rem; color: var(--muted); margin-top: .75rem; }
+
+  footer { border-top: 1px solid var(--line); padding: 2rem 0; color: var(--muted); font-size: .9rem; text-align: center; }
+
+  @media (max-width: 800px) {
+    .hero, .contact { grid-template-columns: 1fr; }
+    .hero svg { max-width: 260px; order: -1; }
+    nav a { margin-left: 1rem; }
+    .btn.ghost { margin-left: 0; margin-top: .75rem; }
+  }
+  @media (max-width: 480px) {
+    .menu .name, .menu .price { font-size: 1.4rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <a class="logo" href="#top">Crimsy Catering</a>
+  <nav>
+    <a href="#plans">Plans</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <h1>Mini pancakes, made fresh at your event.</h1>
+        <p>We serve warm mini pancakes with your choice of toppings at weddings, birthdays and any celebration. Pick the number of hours and we handle the rest.</p>
+        <a class="btn" href="#contact">Request a quote</a>
+        <a class="btn ghost" href="#plans">See plans</a>
+      </div>
+      <!-- Gold line-drawing of a mini pancake stack -->
+      <svg viewBox="0 0 300 300" role="img" aria-label="A stack of mini pancakes with syrup">
+        <g fill="none" stroke="#c9a24b" stroke-width="2.5" stroke-linecap="round">
+          <ellipse cx="150" cy="238" rx="105" ry="26"/>
+          <path d="M45 238v-22c0 14 47 26 105 26s105-12 105-26v22"/>
+          <path d="M60 200c0 12 42 22 90 22s90-10 90-22" />
+          <path d="M60 200v-22M240 200v-22"/>
+          <path d="M65 176c0 11 38 20 85 20s85-9 85-20"/>
+          <path d="M65 176v-22M235 176v-22"/>
+          <path d="M70 154c0 10 36 18 80 18s80-8 80-18"/>
+          <path d="M70 154v-20M230 154v-20"/>
+          <ellipse cx="150" cy="134" rx="80" ry="18" fill="#0e0d0b"/>
+          <path d="M100 134c0 14 8 30 14 30s6-12 12-12 6 20 14 20 8-26 14-26 10 18 16 18 6-14 14-14 6 10 10 10" stroke="#e9d08f"/>
+          <path d="M96 128c14 8 40 12 54 12s40-4 54-12" stroke="#e9d08f" opacity=".5"/>
+        </g>
+        <g fill="#c9a24b">
+          <circle cx="132" cy="122" r="5"/>
+          <circle cx="160" cy="118" r="5"/>
+          <circle cx="182" cy="126" r="4"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       PLANS: edit prices and details in this section
+       ============================================================ -->
+  <section id="plans">
+    <div class="wrap">
+      <h2>Plans</h2>
+      <p class="lead">Priced by how long we serve. Every plan covers weddings, birthdays and any other event.</p>
+
+      <ul class="menu">
+        <li><span class="name">1 hour</span><span class="dots"></span><span class="price">£150</span></li>
+        <li><span class="name">2 hours</span><span class="dots"></span><span class="price">£275</span></li>
+        <li><span class="name">3 hours</span><span class="dots"></span><span class="price">£350</span></li>
+        <li class="long">
+          <span class="name">5 hours or more</span><span class="dots"></span>
+          <span class="price">£450<span class="note">+ £150 for each extra hour</span></span>
+        </li>
+      </ul>
+      <p class="small">Need exactly 4 hours? Get in touch and we will quote you.</p>
+
+      <div class="calc">
+        <label for="hours">Estimate your price</label>
+        <select id="hours">
+          <option value="1">1 hour</option>
+          <option value="2">2 hours</option>
+          <option value="3">3 hours</option>
+          <option value="4">4 hours</option>
+          <option value="5" selected>5 hours</option>
+          <option value="6">6 hours</option>
+          <option value="7">7 hours</option>
+          <option value="8">8 hours</option>
+          <option value="9">9 hours</option>
+          <option value="10">10 hours</option>
+        </select>
+        <output id="estimate" aria-live="polite"></output>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap">
+      <h2>What you get</h2>
+      <p class="lead">A simple service, so your guests get warm pancakes and you get to enjoy the day.</p>
+      <ul class="about-list">
+        <li><strong>Made on the day</strong><span>Mini pancakes served warm throughout your booked hours.</span></li>
+        <li><strong>Any event</strong><span>Weddings, birthdays, parties and corporate days.</span></li>
+        <li><strong>Clear pricing</strong><span>Pay by the hour, with no hidden extras on the plans above.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap contact">
+      <div>
+        <h2>Get in touch</h2>
+        <p class="lead">Tell us the date and how long you need us. We will reply by email with availability and a quote.</p>
+        <p>
+          Email<br>
+          <a href="mailto:crimsycatering@gmail.com">crimsycatering@gmail.com</a>
+        </p>
+      </div>
+
+      <form id="enquiry" novalidate>
+        <div class="row"><label for="name">Your name</label><input id="name" type="text" autocomplete="name" required></div>
+        <div class="row"><label for="date">Event date</label><input id="date" type="date"></div>
+        <div class="row">
+          <label for="type">Event type</label>
+          <select id="type">
+            <option>Wedding</option><option>Birthday</option><option>Corporate event</option><option>Other</option>
+          </select>
+        </div>
+        <div class="row">
+          <label for="length">Hours needed</label>
+          <select id="length">
+            <option>1 hour</option><option>2 hours</option><option>3 hours</option><option>4 hours</option><option>5 hours or more</option>
+          </select>
+        </div>
+        <div class="row"><label for="msg">Anything else we should know?</label><textarea id="msg"></textarea></div>
+        <button class="btn" type="submit">Send enquiry by email</button>
+        <p class="form-note">This opens your email app with the details filled in, ready to send.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">&copy; <span id="year"></span> Crimsy Catering</div>
+</footer>
+
+<script>
+  // ============================================================
+  // PRICES: change these numbers and the estimate updates too.
+  // (Also update the visible prices in the Plans section above.)
+  // ============================================================
+  var PRICES = { 1: 150, 2: 275, 3: 350, base5: 450, extraHour: 150 };
+  var EMAIL = "crimsycatering@gmail.com";
+
+  var select = document.getElementById("hours");
+  var out = document.getElementById("estimate");
+
+  function update() {
+    var h = parseInt(select.value, 10);
+    if (h === 4) {
+      out.innerHTML = "Ask for a quote<small>Email us for 4-hour pricing.</small>";
+    } else if (h >= 5) {
+      var total = PRICES.base5 + (h - 5) * PRICES.extraHour;
+      out.innerHTML = "£" + total + "<small>" + h + " hours: £" + PRICES.base5 + " base" +
+        (h > 5 ? " + " + (h - 5) + " extra hour" + (h - 5 > 1 ? "s" : "") + " at £" + PRICES.extraHour : "") + "</small>";
+    } else {
+      out.innerHTML = "£" + PRICES[h] + "<small>" + h + " hour" + (h > 1 ? "s" : "") + "</small>";
+    }
+  }
+  select.addEventListener("change", update);
+  update();
+
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  document.getElementById("enquiry").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var name = document.getElementById("name").value.trim();
+    if (!name) { document.getElementById("name").focus(); return; }
+    var body =
+      "Name: " + name + "\n" +
+      "Event date: " + (document.getElementById("date").value || "Not set") + "\n" +
+      "Event type: " + document.getElementById("type").value + "\n" +
+      "Hours needed: " + document.getElementById("length").value + "\n\n" +
+      document.getElementById("msg").value;
+    window.location.href = "mailto:" + EMAIL +
+      "?subject=" + encodeURIComponent("Enquiry from " + name) +
+      "&body=" + encodeURIComponent(body);
+  });
+</script>
+</body>
+</html>
